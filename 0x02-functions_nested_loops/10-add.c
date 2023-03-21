@@ -5,12 +5,12 @@
  *
  * @a: parameter 1
  *
- * @a: parameter 2
+ * @b: parameter 2
  *
  * Return: sum
  */
 
 int add(int a, int b)
 {
-	return (a+b);
+	return (a + b);
 }
