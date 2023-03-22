@@ -14,7 +14,7 @@ int main(void)
 
 	j = 1;
 	k = 2;
-	sum = k;
+	sum = 0;
 
 	for (i = 1; i <= 33; ++i)
 	{
