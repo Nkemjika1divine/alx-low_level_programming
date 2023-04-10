@@ -5,17 +5,19 @@
 /**
  * main - prints the result of 2 integers entered in the command line
  *
- * @argc - number of commands
+ * @argc: number of commands
  *
- * @argv - number of arrays
+ * @argv: number of arrays
  *
  * Return: 0 if true an 1 if false
  */
 
-int main(int argc, int *argv[])
+int main(int argc, char *argv[])
 {
 	int a;
 	int b;
+/*write the if argument and make use atoi which is a function*/
+/* that converts char or strings to integers*/
 
 	if (argc == 3)
 	{
