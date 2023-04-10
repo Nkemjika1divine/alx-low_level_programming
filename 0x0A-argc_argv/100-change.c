@@ -13,8 +13,9 @@
 
 int main(int argc, char *argv[])
 {
+	/* declare variables*/
 	int position, total, change, aux;
-	int coins[] = {25, 10, 5, 2, 1};
+	int coins[] = {25, 10, 5, 2, 1}; /*this is an array*/
 
 	position = total = change = aux = 0;
 
@@ -24,7 +25,7 @@ int main(int argc, char *argv[])
 		return (1);
 	}
 
-	total = atoi(argv[1]);
+	total = atoi(argv[1]); /*convert string to int*/
 
 	if (total <= 0)
 	{

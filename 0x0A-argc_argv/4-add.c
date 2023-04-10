@@ -1,10 +1,5 @@
 #include <stdio.h>
-#include <ctype.h>
 #include <stdlib.h>
-#include <string.h>
-#include "main.h"
-
-int check_num(char *str)
 
 /**
  * main - This program adds positive numbers
@@ -12,31 +7,26 @@ int check_num(char *str)
  * @argc: number of arguments
  * @argv: number of arrays
  *
- * Return: 1 if error
+ * Return: 0 but 1 if error
  */
 
-int main(int argc, char *argv[]);
+int main(int argc, char *argv[])
 
 {
-	int count;
-	int str_to_int;
-	int sum = 0;
+	int a;
+	int num;
+	int result;
 
-	count = 1;
-	while (count < 1)
+	for (a = 1; a < argc; a++)
 	{
-		if (check_num(argv[count]))
-			str_to_int = atoi(argv[count]);
-			sum += str_to_int;
+		num = atoi(argv[a]);
+		result = result + num;
+		if (*argv[a] < '0')
+		{
+			printf("Error\n");
+			return (1);
+		}
 	}
-	else
-	{
-		printf("Error\n");
-		return (1);
-	}
-	count++;
-	{
-		printf("%d\n", sum);
-		return (0);
-	}
+	printf("%d\n", result);
+	return (0);
 }
