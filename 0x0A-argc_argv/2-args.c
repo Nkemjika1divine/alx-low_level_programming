@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include "main.h"
 
-/*
- * main - this proram prints the arguments it recieves in the command line
+/**
+ * main - this proram prints the arguments it recieves in the
+ * command line
  *
- * @argc - number of arguments
+ * @argc: number of arguments
  *
- * @argv - number of arrays
+ * @argv: number of arrays
  *
  * Return: 0
  */

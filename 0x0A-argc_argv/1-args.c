@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include "main.h"
 
-/*
- * main - this program prints the number of argumengts passed to it
+/**
+ * main - this program prints the number of arguments passed to it
  *
- * @argc - number of arguments
- *
- * @argv - number of arrays
+ * @argc: number of arguments
+ * @argv: number of arrays
  *
  * Return: 0
  */
