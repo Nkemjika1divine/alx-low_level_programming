@@ -27,3 +27,7 @@ int sum_them_all(const unsigned int n, ...)
 	return (b);
 }
 
+
+/*in this function, b += va_arg(ap, int) means add*/
+/* b to va_arg(ap, int) and call the new value b*/
+/* and so on. that creates a loop for every input*/
