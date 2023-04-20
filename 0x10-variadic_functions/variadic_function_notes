@@ -1,0 +1,69 @@
+Variadic functions
+this is a function that can take a variety of arguments.
+    four major macros used in VF
+1. va_list 2. va_start 3. va_arg 4. va-end
+Note: macros are alises or nicknames for certain values, eg:
+    #define pi 3.142
+    this is a macros that means that whenever pi is seen, the compiler sees it as 3.142.
+However, there are universal macros that have been created in c and storedin the <stdarg.h> header guard
+
+1. va-list - this is used to give a name to the list of variable arguments that we have.
+    eg:     int sum(int x, int y, ...)
+the (...) is ussed to tell the compiler that there are more variables to input and va_list is used to name those variables.
+    eg          int sum(int x, int y, ...)
+                va_list numbers;
+here, va_list was used to give the name "numbers" to the argument that have not been listed in the function but will be used in the codecvt
+
+2. va_start - this tells the compiler where to start picking the arguments in the list. it takes 2 arguments because it is a function
+using the example above, the va_start function will look like this
+            va_start(numbers, y)
+the first argument is usually the name entered in the va_list macros which in this case is "numbers", and the second argument tells the compiler where to start counting from, as in this case, it tells the compiler to start counting after the y variable in the main function.
+
+3. va _arg - it works as a function too and takes the name of the list and data type.
+    eg: assuming the values for "numbers" are
+        numbers = 45, 65, 23, 7;
+    you will call the for the values by declaring
+        va_arg(numbers, int);
+the int refers to the first value which is 45. if you call the same macros again, it will pick the second value which is 65. if you keep calling it, it will keep picking numbers one by one.
+however, if you have mixed data types in your arguments,
+    eg      numbers = 4, 87, divine, V, 59.45;
+you have to usse the va_arg function in the followinf ways
+        va_arg(numbers, int) to call 4
+        va_arg(numbers, int) to call 87
+        va_arg(numbers, char*) to call divine (as character pointers are used to call strings)
+        va_arg(numbers, int) to call v (as integer is used to call char data type)
+        va_arg(numbers, double) to call 59.45 (as double is used to call out floats)
+
+4. va_end - this is used to signify the end of the list, eg
+            va_end(numbers)
+    whenever this is written in the code, it means the end of the Variadic functions calling.
+
+
+    a good example of the use of this is
+
+#include <stdio.h>
+#include <stdarg.h>
+
+int sum(int a, int b, ...)
+{
+    int sum;
+
+    va_list numbers;
+    va_start(numbers, b);
+
+    int c = va_arg(numbers, int);
+    int d = va_arg(numbers, int);
+    int e = va_arg(numbers, int);
+    int f = va_arg(numbers, int);
+    sum = a + b + c + d + e + f;
+    return(sum);
+}
+
+int main()
+{
+    int a;
+
+    a = sum(32, 45, 4, 6, 2, 7);
+    printf("%d", a);
+    return (0);
+}
