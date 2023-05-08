@@ -9,7 +9,7 @@
  * @letters: the number of letters it should read and print
  *
  * Return: 0 if filename is null or if write function does not write thr
- * 		correct number of bytes
+ *		correct number of bytes
  */
 
 ssize_t read_textfile(const char *filename, size_t letters)
