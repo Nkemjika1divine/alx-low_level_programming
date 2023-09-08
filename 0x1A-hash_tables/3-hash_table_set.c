@@ -10,50 +10,43 @@
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	hash_node_t *node = malloc(sizeof(hash_node_t));
-	hash_node_t *temp;
-	unsigned long int index;
+	hash_node_t *new;
+	char *value_copy;
+	unsigned long int index, i;
 
-	if (node == NULL || ht == NULL || key == NULL || value == NULL)
+	if (ht == NULL || key == NULL || *key == '\0' || value == NULL)
 		return (0);
 
-	index = key_index((const unsigned char *)key, ht->size); /*find the index of the key*/
-
-	node->key = strdup(key); /*strdup automatically calls malloc*/
-	if (node->key == NULL)
-	{
-		free(node);
+	value_copy = strdup(value);
+	if (value_copy == NULL)
 		return (0);
-	}
 
-	node->value = strdup(value);
-	if (node->value == NULL)
+	index = key_index((const unsigned char *)key, ht->size);
+	for (i = index; ht->array[i]; i++)
 	{
-		free(node->key); /*free the key that has already been created*/
-		free(node);
-		return (0);
-	}
-	node->next = NULL;
-
-	if (ht->array[index] == NULL) /*if that index is empty*/
-		ht->array[index] = node; /*assign the node to it*/
-	else
-	{
-		temp = ht->array[index];
-		while (temp->next != NULL)
+		if (strcmp(ht->array[i]->key, key) == 0)
 		{
-			if (strcmp(key, temp->key) == 0) /*if key already is*/
-			{
-				free(temp->value);
-				temp->value = strdup(value);
-				free(node->value);
-				free(node->key);
-				free(node);
-				return (1);
-			}
-			temp = temp->next;
+			free(ht->array[i]->value);
+			ht->array[i]->value = value_copy;
+			return (1);
 		}
-		temp->next = node;
 	}
+
+	new = malloc(sizeof(hash_node_t));
+	if (new == NULL)
+	{
+		free(value_copy);
+		return (0);
+	}
+	new->key = strdup(key);
+	if (new->key == NULL)
+	{
+		free(new);
+		return (0);
+	}
+	new->value = value_copy;
+	new->next = ht->array[index];
+	ht->array[index] = new;
+
 	return (1);
 }
