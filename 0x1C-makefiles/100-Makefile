@@ -1,9 +1,8 @@
+.PHONY = all clean oclean fclean re
 CC = gcc
 SRC = main.c school.c
 OBJ = $(SRC:.c=.o)
 NAME = school
-RM = rm -f
-.PHONY = all clean oclean fclean re
 CFLAGS = -Wall -Werror -Wextra -pedantic
 all: m.h $(OBJ)  # m.h ensures that the file does not compile if its not there
 	$(CC) $(OBJ) -o $(NAME)
