@@ -29,7 +29,7 @@ int search(int *array, int l, int r, int value)
 	}
 
 	if (array[mid] == value)
-		return mid;
+		return (mid);
 	else if (array[mid] > value)
 		return (search(array, l, mid - 1, value));
 	else
@@ -40,7 +40,7 @@ int search(int *array, int l, int r, int value)
  * binary_search - this function searches for a number in a sortd array
  * @array: the array to search
  * @size: the size of the array
- * value: the value to search
+ * @value: the value to search
  *
  * Return: the inde of the value or -1 otherwise
  */
